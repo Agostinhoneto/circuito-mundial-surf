@@ -15,7 +15,6 @@ return new class extends Migration
             $table->numero();
             $table->string('nome');
             $table->string('pais');
-            
             $table->timestamps();
         });
     }
