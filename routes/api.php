@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BateriaController;
+use App\Http\Controllers\NotasController;
 use App\Http\Controllers\SurfistaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,18 +31,27 @@ Route::controller(SurfistaController::class)->group(function () {
 });
 
 
-Route::group(['prefix' => 'surfistas'], function () {
-    Route::get('/', [SurfistaController::class, 'index']);
-    Route::get('/{id}', [SurfistaController::class, 'show']);
-    Route::post('/', [SurfistaController::class, 'store']);
-    Route::put('/{id}', [SurfistaController::class, 'update']);
-    Route::delete('/{id}', [SurfistaController::class, 'destroy']);
+Route::controller(BateriaControllerController::class)->group(function () {
+    Route::get('index', 'index');
+    Route::post('register', 'register')->middleware('AdminMiddleware');  
+    Route::get('show/{id}','show');
+    Route::put('update/{id}','update'); 
+    Route::delete('destroy/{id}','destroy');
 });
 
-Route::group(['prefix' => 'ondas'], function () {
-    Route::get('/', [SurfistaController::class, 'index']);
-    Route::get('/{id}', [SurfistaController::class, 'show']);
-    Route::post('/', [SurfistaController::class, 'store']);
-    Route::put('/{id}', [SurfistaController::class, 'update']);
-    Route::delete('/{id}', [SurfistaController::class, 'destroy']);
+
+Route::controller(OndasController::class)->group(function () {
+    Route::get('index', 'index');
+    Route::post('register', 'register')->middleware('AdminMiddleware');  
+    Route::get('show/{id}','show');
+    Route::put('update/{id}','update'); 
+    Route::delete('destroy/{id}','destroy');
+});
+
+Route::controller(NotasController::class)->group(function () {
+    Route::get('index', 'index');
+    Route::post('register', 'register')->middleware('AdminMiddleware');  
+    Route::get('show/{id}','show');
+    Route::put('update/{id}','update'); 
+    Route::delete('destroy/{id}','destroy');
 });
