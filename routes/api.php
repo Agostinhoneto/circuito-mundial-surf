@@ -19,6 +19,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::controller(SurfistaController::class)->group(function () {
+    Route::get('index', 'index');
+    Route::post('register', 'register')->middleware('AdminMiddleware');  
+    Route::get('show/{id}','show');
+    Route::put('update/{id}','update'); 
+    Route::delete('destroy/{id}','destroy');
+});
+
+
 Route::group(['prefix' => 'surfistas'], function () {
     Route::get('/', [SurfistaController::class, 'index']);
     Route::get('/{id}', [SurfistaController::class, 'show']);
