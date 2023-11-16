@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('onda', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bateria_id');
-            $table->foreign('bateria_id')->references('id')->on('bateria')->onDelete('cascade');
+            $table->foreign('bateria_id')->references('id')->on('baterias')->onDelete('cascade');
             $table->timestamps();
         });
     }

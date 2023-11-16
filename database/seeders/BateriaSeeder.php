@@ -14,13 +14,9 @@ class BateriaSeeder extends Seeder
     public function run(): void
     {
         Bateria::create([
-            'data' => '2023-01-01',
-            // Adicione outros campos necessários para a bateria
-        ]);
-
-        Bateria::create([
-            'data' => '2023-01-02',
-            // Adicione outros campos conforme necessário
+            'id' => 1,
+            'fk_id_1' => 1,
+            'fk_id_2' => 1,
         ]);
     }
 }

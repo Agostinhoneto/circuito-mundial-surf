@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bateria', function (Blueprint $table) {
+        Schema::table('baterias', function (Blueprint $table) {
             $table->foreignId('fk_id_1')->constrained('surfistas')->nullable()->references('numero'); 
             $table->foreignId('fk_id_2')->constrained('surfistas')->nullable()->references('numero');
         });
