@@ -12,14 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bateria', function (Blueprint $table) {
-            $table->id();
-            /*
-            $table->unsignedBigInteger('surfista_id');
-            $table->foreign('surfista_id')->references('numero')->on('surfistas')->onDelete('cascade');
-          /*
-            $table->unsignedBigInteger('surfista_2')->nullable();
-            $table->foreignId('surfista_2')->references('numero')->on('surfistas')->onDelete('cascade');
-            */
+            $table->id(); 
             $table->timestamps();
         });
     }
