@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('nota', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('onda')->nullable();
+            $table->foreign('onda')->references('id')->on('onda')->onDelete('cascade');
+            $table->string('notaParcial1');
+            $table->string('notaParcial2');
+            $table->string('notaParcial3');
             $table->timestamps();
         });
     }

@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('bateria', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('surfista_id');
+            $table->foreign('surfista_id')->references('numero')->on('surfistas')->onDelete('cascade');
+          /*
+            $table->unsignedBigInteger('surfista_2')->nullable();
+            $table->foreignId('surfista_2')->references('numero')->on('surfistas')->onDelete('cascade');
+            */
             $table->timestamps();
         });
     }
