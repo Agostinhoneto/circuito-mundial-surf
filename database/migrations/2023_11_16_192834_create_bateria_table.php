@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('bateria', function (Blueprint $table) {
             $table->id();
+            /*
             $table->unsignedBigInteger('surfista_id');
             $table->foreign('surfista_id')->references('numero')->on('surfistas')->onDelete('cascade');
           /*
