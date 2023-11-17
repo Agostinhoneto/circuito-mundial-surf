@@ -14,7 +14,7 @@ class BateriaController extends Controller
 {
     public function index()
     {
-        return Bateria::all();
+        return response()->json(Bateria::all());
     }
 
     public function show($id)
