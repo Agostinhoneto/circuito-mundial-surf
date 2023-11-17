@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BateriaController;
 use App\Http\Controllers\NotasController;
+use App\Http\Controllers\OndasController;
 use App\Http\Controllers\SurfistaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,9 +32,9 @@ Route::controller(SurfistaController::class)->group(function () {
 });
 
 
-Route::controller(BateriaControllerController::class)->group(function () {
+Route::controller(BateriaController::class)->group(function () {
     Route::get('bateria/index', 'index');
-    Route::post('bateria/create', 'create');  
+    Route::post('bateria/store', 'store');  
     Route::get('bateria/show/{id}','show');
     Route::put('bateria/update/{id}','update'); 
     Route::delete('bateria/destroy/{id}','destroy');
