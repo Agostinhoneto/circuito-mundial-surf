@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(SurfistaSeeder::class);
         $this->call(BateriaSeeder::class);
+        $this->call(OndasSeeder::class);
+        $this->call(NotasSeeder::class);
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

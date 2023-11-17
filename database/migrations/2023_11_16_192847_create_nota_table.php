@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('onda')->nullable();
-            $table->foreign('onda')->references('id')->on('onda')->onDelete('cascade');
+            $table->foreign('onda')->references('id')->on('ondas')->onDelete('cascade');
             $table->string('notaParcial1');
             $table->string('notaParcial2');
             $table->string('notaParcial3');

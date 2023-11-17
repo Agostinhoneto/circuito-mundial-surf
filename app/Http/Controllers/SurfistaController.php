@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\DB;
 class SurfistaController extends Controller
 {
 
-
+/*
     public function __construct(private SurfistaService $surfistaService)
     {
         $this->surfistaService = $surfistaService;
     }
-
+*/
     public function index()
     {
         return Surfista::all();
@@ -29,10 +29,14 @@ class SurfistaController extends Controller
         return Surfista::find($id);
     }
 
-    public function store(Request $request)
+    public function store(SurfistaRequest $request)
     {
-        //return Surfista::create($request->all());
-          
+        
+        $surfista = Surfista::create($request->validated());
+
+        return response()->json(['message' => 'Surfista criado com sucesso', 'data' => $surfista], 201);
+        
+        /*
         $dados = [
             $numero          = $request->input('numero'),
             $nome            = $request->input('nome'),
@@ -53,7 +57,7 @@ class SurfistaController extends Controller
             DB::roolBack();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
-        
+        */
     }
 
     public function update(Request $request, $id)
