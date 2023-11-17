@@ -49,6 +49,14 @@ class NotasController extends Controller
         return $notas;
     }
 
+    public function obterMedia($notaId)
+    {
+        $nota = Nota::findOrFail($notaId);
+        $media = $nota->calcularMedia();
+
+        return response()->json(['media' => $media]);
+    }
+    
     public function destroy($id)
     {
         $notas = Nota::findOrFail($id);
