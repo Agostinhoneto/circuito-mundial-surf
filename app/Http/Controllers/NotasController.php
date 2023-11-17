@@ -14,6 +14,8 @@ class NotasController extends Controller
 {
     public function index()
     {
+        return Nota::all();
+
         $surfista = Nota::get()->toJson(JSON_PRETTY_PRINT);
         return response($surfista, 200);
     }
@@ -51,11 +53,9 @@ class NotasController extends Controller
         return $notas;
     }
 
-    public function obterMedia($id)
+    public function obterMedia($notaId)
     {
-       // $nota = Surfista::with('su')->with();
-        $nota = Surfista::findOrFail($id);
-
+        $nota = Nota::findOrFail($notaId);
         $media = $nota->calcularMedia();
 
         return response()->json(['media' => $media]);

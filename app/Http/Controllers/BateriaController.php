@@ -56,7 +56,7 @@ class BateriaController extends Controller
     }
 
     // calcular media
-    public function calcularMedia($nota1,$nota2,$nota3)
+    public function calcularMedia($nota1, $nota2, $nota3)
     {
         $nota1 = 0;
         $nota2 = 0;
@@ -65,7 +65,7 @@ class BateriaController extends Controller
         return ($nota1 + $nota2 + $nota3) / 3;
     }
 
-    public function calcularVencedor($surfista1,$surfista2)
+    public function calcularVencedor($surfista1, $surfista2)
     {
         $surfista1;
         $surfista2;
