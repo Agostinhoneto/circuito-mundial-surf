@@ -14,6 +14,7 @@ class SurfistaService
         $this->surfistaRepository = $surfistaRepository;
     }
 
+    /*
     public function getAll($limit = 10)
     {
         return $this->surfistaRepository->getAll($limit);
@@ -24,11 +25,11 @@ class SurfistaService
         return $this->surfistaRepository
             ->getById($id);
     }
-
+    */
     public function register($numero,$nome,$pais)
     {
-        $result = $this->surfistaRepository
-            ->save($numero,$nome,$pais);
+       // dd('oi');
+        $result = $this->surfistaRepository->save($numero,$nome,$pais);
         return $result;
     }
 

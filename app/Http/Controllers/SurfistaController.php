@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class SurfistaController extends Controller
 {
-
+    
     public function __construct(private SurfistaService $surfistaService)
     {
         $this->surfistaService = $surfistaService;
@@ -28,27 +28,22 @@ class SurfistaController extends Controller
         return Surfista::find($id);
     }
 
-    public function stores(SurfistaRequest $request)
+    public function store(SurfistaRequest $request)
     {
+       // dd('aqui');
         //return Surfista::create($request->all());
           
         $dados = [
-            $empresa_id          = $request->input('empresa_id'),
-            $nome_fantasia       = $request->input('nome_fantasia'),
-            $cnpj                = $request->input('cnpj'),
-            $telefone            = $request->input('telefone'),
-            $status              = $request->input('status'), 
-            $inscricao_estadual  = $request->input('inscricao_estadual'),
+            $numero          = $request->input('numero'),
+            $nome            = $request->input('nome'),
+            $pais            = $request->input('pais'),
         ];
         DB::beginTransaction();
         try {
             $dados['data'] =  $this->surfistaService->register(
-                $empresa_id,
-                $nome_fantasia,
-                $cnpj,
-                $telefone,
-                $status,
-                $inscricao_estadual
+                $numero,
+                $nome,
+                $pais
             );
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE,HttpStatusCodes::OK]);

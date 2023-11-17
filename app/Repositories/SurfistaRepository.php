@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Repositories;
+
 use App\Models\Surfista;
 
 class SurfistaRepository{
@@ -8,7 +9,7 @@ class SurfistaRepository{
     
     public function __construct(Surfista $surfista)
     {
-        $this->surfista= $surfista;
+        $this->surfista = $surfista;
     }
     
     public function getAll($limit){
@@ -24,10 +25,13 @@ class SurfistaRepository{
         $surfista = new $this->surfista;
         $surfista->numero = $numero;
         $surfista->nome = $nome;
-        $surfista->pais = $pais;
-        $surfista->save();   
+        $surfista->pais = $pais;        
+        $surfista->save();           
         return $surfista->fresh();
     }
+}
+
+
 /*
     public function update($id,$nome,$nome_social,$razao_social,$cnpj,$telefone,$email,$tipo_empresa_id,$natureza_empresa_id,$inscricao_empresa_id,$status,$usuario_cadastrante_id,$usuario_alterante_id)
     {   
@@ -60,4 +64,4 @@ class SurfistaRepository{
         return $empresa;  
     }
     */
-}    
+//}    
