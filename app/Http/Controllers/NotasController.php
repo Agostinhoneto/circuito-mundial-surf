@@ -25,13 +25,14 @@ class NotasController extends Controller
     {
         DB::beginTransaction();
         try {
-            $onda = new Nota();
-            $onda->id = $request->id;
-            $onda->onda = $request->onda;
-            $onda->notaParcial1 = $request->notaParcial1;
-            $onda->notaParcial2 = $request->notaParcial2;
-            $onda->notaParcial3 = $request->notaParcial3;
-            $onda->save();
+            $nota = new Nota();
+            $nota->id = $request->id;
+            $nota->onda = $request->onda;
+            $nota->notaParcial1 = $request->notaParcial1;
+            $nota->notaParcial2 = $request->notaParcial2;
+            $nota->notaParcial3 = $request->notaParcial3;
+            $nota->save();
+            
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
             DB::commit();
         } catch (Exception $e) {
