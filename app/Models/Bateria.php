@@ -11,8 +11,8 @@ class Bateria extends Model
 
     protected $fillable = [
         'id',
-        'fk_id_1',
-        'fk_id_2',
+        'surfista1',
+        'surfista2',
     ];
 
     public function surfistas()

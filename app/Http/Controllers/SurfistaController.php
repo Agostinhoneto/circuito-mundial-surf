@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class SurfistaController extends Controller
 {
-   
+
+
     public function __construct(private SurfistaService $surfistaService)
     {
         $this->surfistaService = $surfistaService;
     }
-   
+
     public function index()
     {
         return Surfista::all();
@@ -28,7 +29,7 @@ class SurfistaController extends Controller
         return Surfista::find($id);
     }
 
-    public function store(SurfistaRequest $request)
+    public function store(Request $request)
     {
         //return Surfista::create($request->all());
           
@@ -37,9 +38,10 @@ class SurfistaController extends Controller
             $nome            = $request->input('nome'),
             $pais            = $request->input('pais'),
         ];
+
         DB::beginTransaction();
         try {
-            $dados['data'] =  $this->surfistaService->register(
+            $dados['data'] =  $this->surfistaService->store(
                 $numero,
                 $nome,
                 $pais

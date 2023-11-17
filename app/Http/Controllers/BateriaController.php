@@ -37,6 +37,7 @@ class BateriaController extends Controller
         return 204;
     }
 
+    // calcular media
     public function calcularMedia($nota1,$nota2,$nota3)
     {
         $nota1 = 0;

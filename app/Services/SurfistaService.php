@@ -26,9 +26,8 @@ class SurfistaService
             ->getById($id);
     }
     */
-    public function register($numero,$nome,$pais)
+    public function store($numero,$nome,$pais)
     {
-       // dd('oi');
         $result = $this->surfistaRepository->save($numero,$nome,$pais);
         return $result;
     }
