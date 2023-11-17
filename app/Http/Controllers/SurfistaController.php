@@ -17,8 +17,12 @@ class SurfistaController extends Controller
 
     public function index()
     {
+
+        return response()->json(Surfista::all());
+        /*
         $surfista = Surfista::get()->toJson(JSON_PRETTY_PRINT);
         return response($surfista, 200);
+        */
     }
 
     public function show($numero)

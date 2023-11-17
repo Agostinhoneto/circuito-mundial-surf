@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BateriasRequest;
 use App\Models\Bateria;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class BateriaController extends Controller
         return Bateria::find($id);
     }
 
-    public function store(Request $request)
+    public function store(BateriasRequest $request)
     {
         return Bateria::create($request->all());
     }
