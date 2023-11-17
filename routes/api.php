@@ -23,35 +23,35 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::controller(SurfistaController::class)->group(function () {
-    Route::get('index', 'index');
-    Route::post('register', 'register')->middleware('AdminMiddleware');  
-    Route::get('show/{id}','show');
-    Route::put('update/{id}','update'); 
-    Route::delete('destroy/{id}','destroy');
+    Route::get('surfistas/index', 'index');
+    Route::post('surfistas/create', 'create');  
+    Route::get('surfistas/show/{id}','show');
+    Route::put('surfistas/update/{id}','update'); 
+    Route::delete('surfistas/destroy/{id}','destroy');
 });
 
 
 Route::controller(BateriaControllerController::class)->group(function () {
-    Route::get('index', 'index');
-    Route::post('register', 'register')->middleware('AdminMiddleware');  
-    Route::get('show/{id}','show');
-    Route::put('update/{id}','update'); 
-    Route::delete('destroy/{id}','destroy');
+    Route::get('bateria/index', 'index');
+    Route::post('bateria/create', 'create');  
+    Route::get('bateria/show/{id}','show');
+    Route::put('bateria/update/{id}','update'); 
+    Route::delete('bateria/destroy/{id}','destroy');
 });
 
 
 Route::controller(OndasController::class)->group(function () {
-    Route::get('index', 'index');
-    Route::post('register', 'register')->middleware('AdminMiddleware');  
-    Route::get('show/{id}','show');
-    Route::put('update/{id}','update'); 
-    Route::delete('destroy/{id}','destroy');
+    Route::get('ondas/index', 'index');
+    Route::post('ondas/create', 'create');  
+    Route::get('ondas/show/{id}','show');
+    Route::put('ondas/update/{id}','update'); 
+    Route::delete('ondas/destroy/{id}','destroy');
 });
 
 Route::controller(NotasController::class)->group(function () {
-    Route::get('index', 'index');
-    Route::post('register', 'register')->middleware('AdminMiddleware');  
-    Route::get('show/{id}','show');
-    Route::put('update/{id}','update'); 
-    Route::delete('destroy/{id}','destroy');
+    Route::get('notas/index', 'index');
+    Route::post('notas/create', 'create');  
+    Route::get('notas/show/{id}','show');
+    Route::put('notas/update/{id}','update'); 
+    Route::delete('notas/destroy/{id}','destroy');
 });
