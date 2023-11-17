@@ -39,6 +39,7 @@ Route::controller(BateriaController::class)->group(function () {
     Route::get('bateria/show/{id}','show');
     Route::put('bateria/update/{id}','update'); 
     Route::delete('bateria/destroy/{id}','destroy');
+    
     Route::get('/nota/{notaId}/media','calcularMediaNota');
     Route::get('/bateria/{bateriaId}/vencedor','determinarVencedorBateria');
 });
@@ -46,7 +47,7 @@ Route::controller(BateriaController::class)->group(function () {
 
 Route::controller(OndasController::class)->group(function () {
     Route::get('ondas/index', 'index');
-    Route::post('ondas/create', 'create');  
+    Route::post('ondas/store', 'store');  
     Route::get('ondas/show/{id}','show');
     Route::put('ondas/update/{id}','update'); 
     Route::delete('ondas/destroy/{id}','destroy');
@@ -54,7 +55,7 @@ Route::controller(OndasController::class)->group(function () {
 
 Route::controller(NotasController::class)->group(function () {
     Route::get('notas/index', 'index');
-    Route::post('notas/create', 'create');  
+    Route::post('notas/store', 'store');  
     Route::get('notas/show/{id}','show');
     Route::put('notas/update/{id}','update'); 
     Route::delete('notas/destroy/{id}','destroy');

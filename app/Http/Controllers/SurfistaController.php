@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\SurfistaRequest;
 use App\HttpStatusCodes;
 use App\Messages;
@@ -12,16 +13,10 @@ use Illuminate\Support\Facades\DB;
 
 class SurfistaController extends Controller
 {
-
-/*
-    public function __construct(private SurfistaService $surfistaService)
-    {
-        $this->surfistaService = $surfistaService;
-    }
-*/
     public function index()
     {
-        return Surfista::all();
+        $surfista = Surfista::get()->toJson(JSON_PRETTY_PRINT);
+        return response($surfista, 200);
     }
 
     public function show($id)
@@ -31,46 +26,50 @@ class SurfistaController extends Controller
 
     public function store(SurfistaRequest $request)
     {
-        
-        $surfista = Surfista::create($request->validated());
-
-        return response()->json(['message' => 'Surfista criado com sucesso', 'data' => $surfista], 201);
-        
-        /*
-        $dados = [
-            $numero          = $request->input('numero'),
-            $nome            = $request->input('nome'),
-            $pais            = $request->input('pais'),
-        ];
-
         DB::beginTransaction();
         try {
-            $dados['data'] =  $this->surfistaService->store(
-                $numero,
-                $nome,
-                $pais
-            );
+            $surfista = new Surfista();
+            $surfista->numero = $request->numero;
+            $surfista->nome = $request->nome;
+            $surfista->pais = $request->pais;
+            $surfista->save();
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
             DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE,HttpStatusCodes::OK]);
         } catch (Exception $e) {
-            dd($e);
-            DB::roolBack();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
+            DB::roolBack();
         }
-        */
     }
 
     public function update(Request $request, $id)
     {
-        $surfista = Surfista::findOrFail($id);
-        $surfista->update($request->all());
-        return $surfista;
+        if (Surfista::where('numero', $id)->exists()) {
+            $surfista = Surfista::find($id);
+            $surfista->name = is_null($request->nome) ? $surfista->nome : $request->nome;
+            $surfista->pais = is_null($request->pais) ? $surfista->pais : $request->pais;
+            $surfista->save();
+            return response()->json([
+                "message" => "updated successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => "Student not found"
+            ], 404);
+        }
     }
 
-    public function destroy($id)
+    public function deleteStudent($id)
     {
-        $surfista = Surfista::findOrFail($id);
-        $surfista->delete();
-        return 204; 
+        if (Surfista::where('id', $id)->exists()) {
+            $surfista = Surfista::find($id);
+            $surfista->delete();
+            return response()->json([
+                "message" => "records deleted"
+            ], 202);
+        } else {
+            return response()->json([
+                "message" => "Student not found"
+            ], 404);
+        }
     }
 }
