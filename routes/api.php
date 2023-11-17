@@ -39,7 +39,12 @@ Route::controller(BateriaController::class)->group(function () {
     Route::get('bateria/show/{id}','show');
     Route::put('bateria/update/{id}','update'); 
     Route::delete('bateria/destroy/{id}','destroy');
+<<<<<<< HEAD
     Route::get('/bateria/vencedor/{id}','determinarVencedor');
+=======
+   
+    Route::get('baterias/vencedor/{id}','determinarVencedor');
+>>>>>>> refs/remotes/origin/master
 });
 
 Route::controller(OndasController::class)->group(function () {
@@ -56,7 +61,13 @@ Route::controller(NotasController::class)->group(function () {
     Route::get('notas/index', 'index');
     Route::post('notas/store', 'store');  
     Route::get('notas/show/{id}','show');
-    Route::put('notas/update/{id}','update'); 
+    Route::put('notas/update/{id}','update');   
     Route::delete('notas/destroy/{id}','destroy');
+<<<<<<< HEAD
     Route::get('notas/media/{id}','obterMedia');
+=======
+
+    Route::get('notas/media/{id}','obterMedia');
+
+>>>>>>> refs/remotes/origin/master
 });

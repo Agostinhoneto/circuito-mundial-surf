@@ -16,10 +16,4 @@ class Nota extends Model
         'notaParcial2',
         'notaParcial3',
     ];
-
-  
-    public function calcularMedia()
-    {
-        return ($this->notaParcial1 + $this->notaParcial2 + $this->notaParcial13) / 3;
-    }
 }

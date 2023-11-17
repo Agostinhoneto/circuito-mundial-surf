@@ -52,7 +52,7 @@ class NotasController extends Controller
 
     public function obterMedia($id)
     {
-        $nota = Nota::findOrFail($id);
+        $nota = Surfista::with('su')->with();
         $nota = Surfista::findOrFail($id);
 
         $media = $nota->calcularMedia();
