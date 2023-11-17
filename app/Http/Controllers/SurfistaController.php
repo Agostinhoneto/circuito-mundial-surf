@@ -31,6 +31,7 @@ class SurfistaController extends Controller
     {
         DB::beginTransaction();
         try {
+            
             $surfista = new Surfista();
             $surfista->numero = $request->numero;
             $surfista->nome = $request->nome;
