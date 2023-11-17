@@ -13,15 +13,18 @@ use Illuminate\Support\Facades\DB;
 
 class SurfistaController extends Controller
 {
+
+
     public function index()
     {
         $surfista = Surfista::get()->toJson(JSON_PRETTY_PRINT);
         return response($surfista, 200);
     }
 
-    public function show($id)
+    public function show($numero)
     {
-        return Surfista::find($id);
+        $surfista = Surfista::where('numero',$numero)->get();
+        return $surfista;
     }
 
     public function store(SurfistaRequest $request)
@@ -41,26 +44,22 @@ class SurfistaController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $numero)
     {
-        if (Surfista::where('numero', $id)->exists()) {
-            $surfista = Surfista::find($id);
-            $surfista->name = is_null($request->nome) ? $surfista->nome : $request->nome;
-            $surfista->pais = is_null($request->pais) ? $surfista->pais : $request->pais;
-            $surfista->save();
-            return response()->json([
-                "message" => "updated successfully"
-            ], 200);
-        } else {
-            return response()->json([
-                "message" => "Student not found"
-            ], 404);
+        $surfista = Surfista::where('numero',$numero)->get();
+        if (!$surfista) {
+            return response()->json(['message' => 'Surfista não encontrado'], 404);
         }
+        $surfista->nome =  $request->nome;
+        $surfista->pais =  $request->pais;
+        $surfista->update();
+
+        return response()->json(['message' => 'Surfista atualizado com sucesso', 'data' => $surfista]); 
     }
 
-    public function deleteStudent($id)
+    public function destroy($id)
     {
-        if (Surfista::where('id', $id)->exists()) {
+        if (Surfista::where('numero', $id)->exists()) {
             $surfista = Surfista::find($id);
             $surfista->delete();
             return response()->json([

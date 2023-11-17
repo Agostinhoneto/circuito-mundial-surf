@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(SurfistaController::class)->group(function () {
     Route::get('surfistas/index', 'index');
     Route::post('surfistas/store', 'store');  
-    Route::get('surfistas/show/{id}','show');
+    Route::get('surfistas/show/{numero}','show');
     Route::put('surfistas/update/{id}','update'); 
     Route::delete('surfistas/destroy/{id}','destroy');
 });
