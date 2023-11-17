@@ -15,8 +15,8 @@ class BateriaSeeder extends Seeder
     {
         Bateria::create([
             'id' => 1,
-            'fk_id_1' => 1,
-            'fk_id_2' => 1,
+            'surfista1' => 1,
+            'surfista2' => 1,
         ]);
     }
 }
