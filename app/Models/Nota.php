@@ -17,8 +17,14 @@ class Nota extends Model
         'notaParcial3',
     ];
 
+    public function ondas()
+    {
+        return $this->hasMany(Onda::class);
+    }
+
     public function calcularMedia()
     {
         return ($this->notaParcial1 + $this->notaParcial2 + $this->notaParcial3) / 3;
     }
+
 }

@@ -40,7 +40,7 @@ Route::controller(BateriaController::class)->group(function () {
     Route::put('bateria/update/{id}','update'); 
     Route::delete('bateria/destroy/{id}','destroy');
    
-    Route::get('/baterias/vencedor/{id}','determinarVencedor');
+    Route::get('baterias/vencedor/{id}','determinarVencedor');
 });
 
 
@@ -58,7 +58,7 @@ Route::controller(NotasController::class)->group(function () {
     Route::get('notas/show/{id}','show');
     Route::put('notas/update/{id}','update');   
     Route::delete('notas/destroy/{id}','destroy');
-    
+
     Route::get('notas/media/{id}','obterMedia');
 
 });

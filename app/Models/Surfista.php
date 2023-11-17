@@ -19,4 +19,9 @@ class Surfista extends Model
     {
         return $this->belongsTo(Bateria::class);
     }
+
+    public function notas()
+    {
+        return $this->hasMany(Nota::class);
+    }
 }
