@@ -14,7 +14,8 @@ class NotasController extends Controller
 {
     public function index()
     {
-        return Nota::all();
+        $surfista = Nota::get()->toJson(JSON_PRETTY_PRINT);
+        return response($surfista, 200);
     }
 
     public function show($id)
