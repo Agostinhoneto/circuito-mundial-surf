@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Nota;
+use App\Models\Surfista;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +53,8 @@ class NotasController extends Controller
     public function obterMedia($id)
     {
         $nota = Nota::findOrFail($id);
+        $nota = Surfista::findOrFail($id);
+
         $media = $nota->calcularMedia();
 
         return response()->json(['media' => $media]);
