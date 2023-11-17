@@ -78,4 +78,12 @@ class BateriaController extends Controller
 
         return ($somaNotasSurfista1 > $somaNotasSurfista2) ? $surfista1 : $surfista2;
     }
+
+    public function determinarVencedor($bateriaId)
+    {
+        $bateria = Bateria::findOrFail($bateriaId);
+        $vencedor = $bateria->calcularVencedor();
+
+        return response()->json(['vencedor' => $vencedor]);
+    }
 }
