@@ -48,13 +48,6 @@ class BateriaController extends Controller
         return $bateria;
     }
 
-    public function destroy($id)
-    {
-        $bateria = Bateria::findOrFail($id);
-        $bateria->delete();
-        return 204;
-    }
-
     // calcular media
     public function calcularMedia($nota1, $nota2, $nota3)
     {
@@ -85,5 +78,12 @@ class BateriaController extends Controller
         $vencedor = $bateria->calcularVencedor();
 
         return response()->json(['vencedor' => $vencedor]);
+    }
+
+    public function destroy($id)
+    {
+        $bateria = Bateria::findOrFail($id);
+        $bateria->delete();
+        return 204;
     }
 }

@@ -36,12 +36,11 @@ class NotasController extends Controller
             $nota->notaParcial2 = $request->notaParcial2;
             $nota->notaParcial3 = $request->notaParcial3;
             $nota->save();
-            
+            DB::commit();        
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
-            DB::commit();
         } catch (Exception $e) {
+            DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-            DB::roolBack();
         }
     }
 

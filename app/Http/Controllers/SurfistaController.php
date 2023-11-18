@@ -27,19 +27,11 @@ class SurfistaController extends Controller
 
     public function store(SurfistaRequest $request)
     {
-        DB::beginTransaction();
-        try {
             $surfista = new Surfista();
             $surfista->numero = $request->numero;
             $surfista->nome = $request->nome;
             $surfista->pais = $request->pais;
             $surfista->save();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
-            DB::commit();
-        } catch (Exception $e) {
-            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-            DB::roolBack();
-        }
     }
 
     public function update(Request $request, $numero)

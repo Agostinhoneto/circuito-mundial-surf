@@ -22,7 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::post('/store', [SurfistaController::class, 'store']);
 
 Route::controller(SurfistaController::class)->group(function () {
     Route::get('surfistas/index', 'index');

@@ -24,12 +24,24 @@ class OndasController extends Controller
 
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        try {
             $onda = new Onda();
             $onda->id = $request->id;
             $onda->bateria_id = $request->bateria_id;
             $onda->save();
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
+        
+    }
+
+    public function update(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $onda = Onda::where('id', $id)->get();
+            if (!$onda) {
+                return response()->json(['message' => 'onda não encontrado'], 404);
+            }
+            $onda->bateria_id =  $request->bateria_id;
+            $onda->update();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
             DB::commit();
         } catch (Exception $e) {
@@ -38,21 +50,18 @@ class OndasController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
-    {
-        $onda = Onda::where('id',$id)->get();
-        if (!$onda) {
-            return response()->json(['message' => 'onda não encontrado'], 404);
-        }
-        $onda->bateria_id =  $request->bateria_id;
-        $onda->update();
-          return response()->json(['message' => 'Surfista atualizado com sucesso', 'data' => $onda]); 
-    }
-
     public function destroy($id)
     {
-        $onda = Onda::findOrFail($id);
-        $onda->delete();
-        return 204; 
+        DB::beginTransaction();
+        try {
+            $onda = Onda::findOrFail($id);
+            if (!$onda) {
+                return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
+            }
+            $onda->delete();
+        } catch (Exception $e) {
+            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
+            DB::roolBack();
+        }
     }
 }
