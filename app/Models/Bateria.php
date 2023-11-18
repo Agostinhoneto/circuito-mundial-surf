@@ -38,7 +38,9 @@ class Bateria extends Model
 
     public function calcularVencedor()
     {
+        
         $notasSurfista1 = $this->surfista1->notas->sortByDesc('calcularMedia')->take(2);
+        dd($notasSurfista1->notas());
         $notasSurfista2 = $this->surfista2->notas->sortByDesc('calcularMedia')->take(2);
         $somaNotasSurfista1 = $notasSurfista1->sum('calcularMedia');
         $somaNotasSurfista2 = $notasSurfista2->sum('calcularMedia');

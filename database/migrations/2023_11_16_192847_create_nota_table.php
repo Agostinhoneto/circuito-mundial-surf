@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('onda')->nullable();
             $table->foreign('onda')->references('id')->on('ondas')->onDelete('cascade');
-            $table->string('notaParcial1');
-            $table->string('notaParcial2');
-            $table->string('notaParcial3');
+            $table->double('notaParcial1');
+            $table->double('notaParcial2');
+            $table->double('notaParcial3');
             $table->timestamps();
         });
     }
