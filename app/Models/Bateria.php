@@ -15,9 +15,15 @@ class Bateria extends Model
         'surfista2',
     ];
 
+
+    public function notas()
+    {
+        return $this->belongsTo(Nota::class);
+    }
+
     public function surfistas()
     {
-        return $this->hasMany(Surfista::class);
+        return $this->belongsTo(Surfista::class);
     }
 
     public function surfista1()

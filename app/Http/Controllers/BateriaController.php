@@ -80,6 +80,8 @@ class BateriaController extends Controller
         return response()->json(['vencedor' => $vencedor]);
     }
 
+    
+
     public function destroy($id)
     {
         $bateria = Bateria::findOrFail($id);
