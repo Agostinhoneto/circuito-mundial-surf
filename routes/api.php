@@ -38,8 +38,8 @@ Route::controller(BateriaController::class)->group(function () {
     Route::get('bateria/show/{id}','show');
     Route::put('bateria/update/{id}','update'); 
     Route::delete('bateria/destroy/{id}','destroy');
+
     Route::get('bateria/vencedor/{id}','determinarVencedor');
-    
 });
 
 Route::controller(OndasController::class)->group(function () {

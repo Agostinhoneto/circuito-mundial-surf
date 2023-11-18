@@ -64,6 +64,7 @@ class BateriaController extends Controller
         $surfista2;
 
         $notasSurfista1 = $surfista1->notas->sortByDesc('media')->take(2);
+        dd($notasSurfista1);
         $notasSurfista2 = $surfista2->notas->sortByDesc('media')->take(2);
 
         $somaNotasSurfista1 = $notasSurfista1->sum('media');
@@ -75,6 +76,7 @@ class BateriaController extends Controller
     public function determinarVencedor($bateriaId)
     {
         $bateria = Bateria::findOrFail($bateriaId);
+        //dd($bateria);
         $vencedor = $bateria->calcularVencedor();
 
         return response()->json(['vencedor' => $vencedor]);
