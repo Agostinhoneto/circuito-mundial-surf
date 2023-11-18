@@ -24,4 +24,9 @@ class Surfista extends Model
     {
         return $this->hasMany(Nota::class);
     }
+
+    public function ondas()
+    {
+        return $this->hasMany(Onda::class);
+    }
 }

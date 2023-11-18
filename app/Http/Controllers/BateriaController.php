@@ -58,27 +58,11 @@ class BateriaController extends Controller
         return ($nota1 + $nota2 + $nota3) / 3;
     }
 
-    public function calcularVencedor($surfista1, $surfista2)
-    {
-        $surfista1;
-        $surfista2;
-
-        $notasSurfista1 = $surfista1->notas->sortByDesc('media')->take(2);
-        dd($notasSurfista1);
-        $notasSurfista2 = $surfista2->notas->sortByDesc('media')->take(2);
-
-        $somaNotasSurfista1 = $notasSurfista1->sum('media');
-        $somaNotasSurfista2 = $notasSurfista2->sum('media');
-
-        return ($somaNotasSurfista1 > $somaNotasSurfista2) ? $surfista1 : $surfista2;
-    }
-
     public function determinarVencedor($bateriaId)
     {
-        $bateria = Bateria::findOrFail($bateriaId);
-        //dd($bateria);
+        $bateria = Bateria::with('primeiroSurfista','segundoSurfista','primeiroSurfista.ondas')->findOrFail($bateriaId);
+      //   dd($bateria->primeiroSurfista,'oi');
         $vencedor = $bateria->calcularVencedor();
-
         return response()->json(['vencedor' => $vencedor]);
     }
 

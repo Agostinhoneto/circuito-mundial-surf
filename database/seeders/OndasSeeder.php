@@ -18,6 +18,7 @@ class OndasSeeder extends Seeder
         DB::table('ondas')->insert([
             'id' => 1,
             'bateria_id' => 1,
+            'surfista_id' => 1,
         ]);
     }
 }

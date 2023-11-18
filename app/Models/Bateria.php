@@ -26,22 +26,23 @@ class Bateria extends Model
         return $this->belongsTo(Surfista::class);
     }
 
-    public function surfista1()
+    public function primeiroSurfista()
     {
-        return $this->belongsTo(Surfista::class, 'surfista1');
+        return $this->belongsTo(Surfista::class, 'surfista1','numero');
     }
 
-    public function surfista2()
+    public function segundoSurfista()
     {
-        return $this->belongsTo(Surfista::class, 'surfista2');
+        return $this->belongsTo(Surfista::class,'surfista2','numero');
     }
+
 
     public function calcularVencedor()
     {
-        
-        $notasSurfista1 = $this->surfista1->notas->sortByDesc('calcularMedia')->take(2);
-        dd($notasSurfista1->notas());
-        $notasSurfista2 = $this->surfista2->notas->sortByDesc('calcularMedia')->take(2);
+        dd($this->primeiroSurfista->ondas()->get());   
+        $notasSurfista1 = $this->primeiroSurfista->notas->sortByDesc('calcularMedia')->take(2);
+        dd($notasSurfista1);
+        $notasSurfista2 = $this->segundoSurfista->notas->sortByDesc('calcularMedia')->take(2);
         $somaNotasSurfista1 = $notasSurfista1->sum('calcularMedia');
         $somaNotasSurfista2 = $notasSurfista2->sum('calcularMedia');
         return ($somaNotasSurfista1 > $somaNotasSurfista2) ? $this->surfista1 : $this->surfista2;
