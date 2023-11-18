@@ -70,9 +70,6 @@ class Bateria extends Model
         }
         
         $total2 = $surfista2MaiorNota1 + $surfista2MaiorNota2;
-        
-        dd($ista2MaiorNota2);
-
-        return ($somaNotasSurfista1 > $somaNotasSurfista2) ? $this->surfista1 : $this->surfista2;
+        return ($total1 > $total2) ? $this->primeiroSurfista : $this->segundoSurfista;
     }
 }
