@@ -27,6 +27,6 @@ class Surfista extends Model
 
     public function ondas()
     {
-        return $this->hasMany(Onda::class);
+        return $this->hasMany(Onda::class,'surfista_id','numero');
     }
 }

@@ -39,12 +39,40 @@ class Bateria extends Model
 
     public function calcularVencedor()
     {
-        dd($this->primeiroSurfista->ondas()->get());   
-        $notasSurfista1 = $this->primeiroSurfista->notas->sortByDesc('calcularMedia')->take(2);
-        dd($notasSurfista1);
-        $notasSurfista2 = $this->segundoSurfista->notas->sortByDesc('calcularMedia')->take(2);
-        $somaNotasSurfista1 = $notasSurfista1->sum('calcularMedia');
-        $somaNotasSurfista2 = $notasSurfista2->sum('calcularMedia');
+        $surfistaMaiorNota1 = 0;
+        $surfistaMaiorNota2 = 0;
+
+        foreach ($this->primeiroSurfista->ondas()->get() as $onda){
+            $nota = $onda->nota->first();
+            $temp = ($nota->notaParcial1 + $nota->notaParcial2 + $nota->notaParcial3) / 3;
+            if($temp > $surfistaMaiorNota1 ){
+                $surfistaMaiorNota1 = $temp;
+            }elseif($temp > $surfistaMaiorNota2)
+            {
+                $surfistaMaiorNota2 = $temp;
+            }
+
+        }
+        $total1 = $surfistaMaiorNota1 + $surfistaMaiorNota2;
+
+        $surfista2MaiorNota1 = 0;
+        $surfista2MaiorNota2 = 0;
+
+        foreach ($this->segundoSurfista->ondas()->get() as $onda){
+            $nota = $onda->nota->first();
+            $temp = ($nota->notaParcial1 + $nota->notaParcial2 + $nota->notaParcial3) / 3;
+            if($temp > $surfista2MaiorNota1 ){
+                $surfista2MaiorNota1 = $temp;
+            }elseif($temp > $surfista2MaiorNota2)
+            {
+                $surfista2MaiorNota2 = $temp;
+            }
+        }
+        
+        $total2 = $surfista2MaiorNota1 + $surfista2MaiorNota2;
+        
+        dd($ista2MaiorNota2);
+
         return ($somaNotasSurfista1 > $somaNotasSurfista2) ? $this->surfista1 : $this->surfista2;
     }
 }

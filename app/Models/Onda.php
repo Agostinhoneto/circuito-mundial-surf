@@ -12,11 +12,10 @@ class Onda extends Model
     protected $fillable = [
         'id',
         'bateria_id',
-        
     ];
 
     public function nota()
     {
-        return $this->hasOne(Nota::class);
+        return $this->hasOne(Nota::class,'onda');
     }
 }
