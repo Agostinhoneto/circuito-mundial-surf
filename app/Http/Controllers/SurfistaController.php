@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 
 class SurfistaController extends Controller
 {
-    /*    
-    public function __construct(private SurfistaRepository $surfistaRepository)
-    {
-    }
-    */
+    
     public function index(Request $request)
     {
         $query = Surfista::query();
@@ -27,14 +23,6 @@ class SurfistaController extends Controller
 
     public function store(SurfistaFormRequest $request)
     {
-       /*
-        $surfista = new Surfista();
-        $surfista->numero = $request->numero;
-        $surfista->nome = $request->nome;
-        $surfista->pais = $request->pais;
-        $surfista->save();
-        */
-
         try {
             $surfista = Surfista::create([
                 'numero' => $request->input('numero'),

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BateriasFormRequest;
 use App\Http\Requests\BateriasRequest;
 use App\HttpStatusCodes;
 use App\Messages;
@@ -22,7 +23,7 @@ class BateriaController extends Controller
         return Bateria::find($id);
     }
 
-    public function store(BateriasRequest $request)
+    public function store(BateriasFormRequest $request)
     {
 
         DB::beginTransaction();
@@ -32,11 +33,11 @@ class BateriaController extends Controller
             $baterias->surfista1 = $request->surfista1;
             $baterias->surfista2 = $request->surfista2;
             $baterias->save();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
             DB::commit();
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (Exception $e) {
+            DB::roolback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-            DB::roolBack();
         }
     }
 
