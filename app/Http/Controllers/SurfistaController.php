@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SurfistaFormRequest;
+use App\HttpStatusCodes;
+use App\Messages;
 use App\Models\Surfista;
 use App\Repositories\SurfistaRepository;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SurfistaController extends Controller
 {
@@ -23,15 +26,18 @@ class SurfistaController extends Controller
 
     public function store(SurfistaFormRequest $request)
     {
+        DB::beginTransaction();
         try {
             $surfista = Surfista::create([
                 'numero' => $request->input('numero'),
                 'nome' => $request->input('nome'),
                 'pais' => $request->input('pais'),
             ]);
-            return response()->json(['data' => $surfista], 201);
+            DB::commit();
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao criar o surfista'], 500);
+            DB::roolback();
+            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
     }
 }
