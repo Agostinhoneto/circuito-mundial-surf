@@ -1,14 +1,12 @@
 # Minha API Laravel 10 - Circuito Mundial de Surf.
 
-API para interação com [descrição breve da funcionalidade].
-
 ## Instalação
 
 1. Clone o repositório
    ```bash
    git clone https://github.com/Agostinhoneto/circuito-mundial.git
 
- - cd seu-repositorio
+ - cd circuito-mundial
  - composer install
  - cp .env.example .env
  - php artisan key:generate
@@ -35,24 +33,24 @@ DB_PASSWORD=
 
 ### `http://localhost:8000/api/surfistas` 
 
-- **GET** : Obter a lista de todos os Surfistas : `http://localhost:8000/api/surfistas/index`
-- **POST**: Inserir surfistas : `http://localhost:8000/api/surfistas/store`
+- **GET** :  `http://localhost:8000/api/surfistas/index` - Obter a lista de todos os Surfistas. 
+- **POST**:  `http://localhost:8000/api/surfistas/store` -  Inserir surfistas. 
 
 ### `http://localhost:8000/api/bateria`
 
-- **GET** : Obter a lista de todos os Surfistas: `http://localhost:8000/api/surfistas/index`
-- **POST**: Criar um novo surfista : `http://localhost:8000/api/surfistas/store`
-- **GET** : Obter o vencedor de uma bateria : `http://localhost:8000/api/bateria/vencedor/{bateriaId}`
+- **GET** : `http://localhost:8000/api/bateria/index` - Obter a lista de todas as Baterias.
+- **POST**: `http://localhost:8000/api/bateria/store` - Criar uma nova bateria.
+- **GET** : `http://localhost:8000/api/bateria/vencedor/{bateriaId}` - Obter o vencedor de uma bateria
 
 ### `http://localhost:8000/api/ondas`
 
-- **GET** : Obter a lista de todas as Ondas: `http://localhost:8000/api/ondas/index`
-- **POST**: Criar uma nova onda : `http://localhost:8000/api/ondas/store`
+- **GET** : `http://localhost:8000/api/ondas/index` - Obter a lista de todas as Ondas
+- **POST**: `http://localhost:8000/api/ondas/store` - Criar uma nova onda
 
 ### `http://localhost:8000/api/notas`
 
-- **GET** : Obter a lista de todas as notas: `http://localhost:8000/api/notas/index`
-- **POST**: Criar um nova nota : `http://localhost:8000/api/notas/store`
+- **GET** : `http://localhost:8000/api/notas/index` - Obter a lista de todas as notas.
+- **POST**: `http://localhost:8000/api/notas/store` - Criar um nova nota .
 
 
 

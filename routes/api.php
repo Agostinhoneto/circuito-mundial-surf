@@ -42,5 +42,4 @@ Route::controller(OndasController::class)->group(function () {
 Route::controller(NotasController::class)->group(function () {
     Route::get('notas/index', 'index');
     Route::post('notas/store', 'store');  
-    //Route::get('notas/media/{id}','obterMedia');
 });
