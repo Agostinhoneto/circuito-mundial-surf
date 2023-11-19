@@ -13,10 +13,20 @@ use Illuminate\Support\Facades\DB;
 
 class SurfistaController extends Controller
 {
-    public function index()
+
+    
+    public function index(Request $request)
     {
+        /*
         $surfista = Surfista::get()->toJson(JSON_PRETTY_PRINT);
         return response($surfista, 200);
+        */
+        $query = Surfista::query();
+        if ($request->has('nome')) {
+            $query->where('nome' , $request->nome);
+        }
+
+        return $query->paginate(5);
     }
 
     public function show($numero)
