@@ -46,8 +46,13 @@ DB_PASSWORD=
 
 ### `http://localhost:8000/api/ondas`
 
-- **GET** : Obter a lista de todos os Surfistas: `http://localhost:8000/api/ondas/index`
-- **POST**: Criar um novo surfista : `http://localhost:8000/api/ondas/store`
+- **GET** : Obter a lista de todas as Ondas: `http://localhost:8000/api/ondas/index`
+- **POST**: Criar uma nova onda : `http://localhost:8000/api/ondas/store`
+
+### `http://localhost:8000/api/notas`
+
+- **GET** : Obter a lista de todas as notas: `http://localhost:8000/api/notas/index`
+- **POST**: Criar um nova nota : `http://localhost:8000/api/notas/store`
 
 
 
