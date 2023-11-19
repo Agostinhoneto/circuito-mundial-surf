@@ -18,11 +18,7 @@ class BateriaController extends Controller
         return response()->json(Bateria::all());
     }
 
-    public function show($id)
-    {
-        return Bateria::find($id);
-    }
-
+  
     public function store(BateriasFormRequest $request)
     {
 
@@ -41,38 +37,19 @@ class BateriaController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
-    {
-        $bateria = Bateria::findOrFail($id);
-        $bateria->update($request->all());
-
-        return $bateria;
-    }
-
-    // calcular media
     public function calcularMedia($nota1, $nota2, $nota3)
     {
         $nota1 = 0;
         $nota2 = 0;
         $nota3 = 0;
-
         return ($nota1 + $nota2 + $nota3) / 3;
     }
 
     public function determinarVencedor($bateriaId)
     {
         $bateria = Bateria::with('primeiroSurfista','segundoSurfista','primeiroSurfista.ondas')->findOrFail($bateriaId);
-      //   dd($bateria->primeiroSurfista,'oi');
         $vencedor = $bateria->calcularVencedor();
         return response()->json(['vencedor' => $vencedor]);
     }
-
     
-
-    public function destroy($id)
-    {
-        $bateria = Bateria::findOrFail($id);
-        $bateria->delete();
-        return 204;
-    }
 }
