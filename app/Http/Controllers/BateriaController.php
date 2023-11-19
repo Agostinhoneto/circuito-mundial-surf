@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BateriasFormRequest;
-use App\Http\Requests\BateriasRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Bateria;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BateriaController extends Controller
@@ -32,7 +30,7 @@ class BateriaController extends Controller
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (Exception $e) {
-            DB::roolback();
+            DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
     }
@@ -51,5 +49,5 @@ class BateriaController extends Controller
         $vencedor = $bateria->calcularVencedor();
         return response()->json(['vencedor' => $vencedor]);
     }
-    
+
 }
