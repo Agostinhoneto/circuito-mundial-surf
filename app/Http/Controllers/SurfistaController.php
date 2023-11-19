@@ -36,7 +36,7 @@ class SurfistaController extends Controller
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (\Exception $e) {
-            DB::roolback();
+            DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
     }
