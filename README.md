@@ -1,4 +1,4 @@
-# Minha API Laravel 10 - Circuito Mundial de Surf.
+# API Laravel 10 - Circuito Mundial de Surf.
 
 ## Instalação
 
@@ -11,10 +11,10 @@
  - cp .env.example .env
  - php artisan key:generate
  
-3. **Configuração da Base de Dados:**
+2. **Configuração da Base de Dados:**
    - Instruções para configurar e migrar o banco de dados.
 
-## 4 -Configuração da Base de Dados
+## 3 -Configuração da Base de Dados
 
 1. Configure o arquivo `.env` com as informações do banco de dados.
 
@@ -29,7 +29,7 @@ DB_PASSWORD=
 
 - php artisan db:seed - Para rodar os seeders de todas as tabelas : Surfistas,Baterias, Ondas e Notas.
 
-### 5 - Endpoints
+### 4 - Endpoints
 
 ### `http://localhost:8000/api/surfistas` 
 
