@@ -17,24 +17,28 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('surfistas', SurfistaController::class)->only([
-    'index', 'store',
-]);
+Route::get('/', function () {
+    return response()->json([
+        'sucess' => true
+    ]);
+});
+
+Route::get('/surfistas/index',[SurfistaController::class,'index']);
+Route::get('/surfistas/store',[SurfistaController::class,'store']);
+
 
 Route::apiResource('bateria', BateriaController::class)->only([
-    'store','vencedor/{bateriaId}',
+    'store', 'vencedor/{bateriaId}',
 ]);
 
 Route::apiResource('ondas', OndasController::class)->only([
-    'store', 
+    'store',
 ]);
 
 Route::apiResource('notas', NotasController::class)->only([
-    'store', 
+    'store',
 ]);
-
