@@ -20,7 +20,7 @@ class OndasController extends Controller
                 'surfista_id' => $request->input('surfista_id'),
             ]);
             DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$onda]);
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
