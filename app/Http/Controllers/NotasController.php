@@ -7,16 +7,12 @@ use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Nota;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class NotasController extends Controller
 {
-    public function index()
-    {
-        $notas = Nota::get()->toJson(JSON_PRETTY_PRINT);
-        return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK,$notas]);
-    }
-
+   
     public function store(NotasFormRequest $request)
     {
         DB::beginTransaction();
@@ -31,6 +27,7 @@ class NotasController extends Controller
             DB::commit();        
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (Exception $e) {
+            dd($e);
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }

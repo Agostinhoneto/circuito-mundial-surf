@@ -31,16 +31,11 @@ Route::apiResource('bateria', BateriaController::class)->only([
     'vencedor/{bateriaId}',
 ]);
 
-/*
-Route::controller(BateriaController::class)->group(function () {
-    Route::post('bateria/store', 'store');  
-    Route::get('bateria/vencedor/{bateriaId}','determinarVencedor');
-});
-*/
-Route::controller(OndasController::class)->group(function () {
-    Route::post('ondas/store', 'store');  
-});
+Route::apiResource('ondas', OndasController::class)->only([
+    'store', 
+]);
 
-Route::controller(NotasController::class)->group(function () {
-    Route::post('notas/store', 'store');  
-});
+Route::apiResource('notas', NotasController::class)->only([
+    'store', 
+]);
+

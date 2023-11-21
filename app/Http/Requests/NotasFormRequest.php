@@ -22,10 +22,11 @@ class NotasFormRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => 'required|integer',
             'onda' => 'required|integer',
-            'notaParcial1' => 'required|double',
-            'notaParcial2' => 'required|double',
-            'notaParcial3' => 'required|double',
+            'notaParcial1' => 'required',
+            'notaParcial2' => 'required',
+            'notaParcial3' => 'required',
         ];
     }
 }
