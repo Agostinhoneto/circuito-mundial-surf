@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 //Inserindo Surfistas e listando todos.
-Route::get('/surfistas/index',[ApiSurfistaController::class,'index']);
+Route::get('/surfistas/index',[SurfistaController::class,'index']);
 Route::post('/surfistas/store',[SurfistaController::class,'store']);
 
 // Inserindo Bateria.

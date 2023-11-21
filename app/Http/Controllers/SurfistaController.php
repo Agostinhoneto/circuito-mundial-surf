@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SurfistaFormRequest;
+use App\Http\Resources\SurfistaResource;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Surfista;
@@ -14,12 +15,16 @@ class SurfistaController extends Controller
 
     public function index(Request $request)
     {
+        $surfista = Surfista::paginate();
+        return SurfistaResource::collection($surfista);
+        /*
         $query = Surfista::query();
         if ($request->has('nome')) {
             $query->where('nome' , $request->nome);
 
         }
         return $query->paginate(5);
+        */
     }
 
     public function store(SurfistaFormRequest $request)
