@@ -8,7 +8,7 @@
 
  1.1 - cd circuito-mundial
  1.2 -  composer install
- 1.3 - cp .env.example .env
+ 1.3 - cp .env.example .env renomear para .env
  1.4 - php artisan key:generate
 
 2. **Configuração da Base de Dados:**
