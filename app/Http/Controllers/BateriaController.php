@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BateriasFormRequest;
+use App\Http\Requests\BateriaFormRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Bateria;
@@ -18,7 +18,7 @@ class BateriaController extends Controller
        }
 
   
-    public function store(BateriasFormRequest $request)
+    public function store(BateriaFormRequest $request)
     {
 
         DB::beginTransaction();

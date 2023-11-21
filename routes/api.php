@@ -30,6 +30,7 @@ Route::apiResource('bateria', BateriaController::class)->only([
     'store', 
     'vencedor/{bateriaId}',
 ]);
+
 /*
 Route::controller(BateriaController::class)->group(function () {
     Route::post('bateria/store', 'store');  

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BateriasFormRequest extends FormRequest
+class NotasFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,8 @@ class BateriasFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer',
-            'surfista1' => 'required|integer',
-            'surfista2' => 'required|integer',
+            'bateria_id' => 'required|integer',
+            'surfista_id' => 'required|integer',
         ];
     }
 }
