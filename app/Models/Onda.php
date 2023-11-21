@@ -15,6 +15,7 @@ class Onda extends Model
         'surfista_id',
     ];
 
+
     public function nota()
     {
         return $this->hasOne(Nota::class,'onda');

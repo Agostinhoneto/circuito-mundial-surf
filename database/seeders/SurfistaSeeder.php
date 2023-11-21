@@ -28,8 +28,5 @@ class SurfistaSeeder extends Seeder
             'pais' => 'Estados Unidos', 
             'created_at' => now(),
         ]);
-
-        $surfista->timestamps = false;
-
     }
 }

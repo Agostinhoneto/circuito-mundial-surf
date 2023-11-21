@@ -17,6 +17,7 @@ class Nota extends Model
         'notaParcial3',
     ];
 
+
     public function baterias()
     {
         return $this->belongsTo(Bateria::class);
