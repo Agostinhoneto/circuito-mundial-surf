@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class OndasController extends Controller
 {
-    public function index()
-    {
-        $onda = Onda::get()->toJson(JSON_PRETTY_PRINT);
-        return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK,$onda]);
-    }
-
     public function store(OndasFormRequest $request)
     {
         DB::beginTransaction();
@@ -24,7 +18,6 @@ class OndasController extends Controller
             $onda->id = $request->id;
             $onda->bateria_id = $request->bateria_id;
             $onda->surfista_id = $request->surfista_id;
-
             $onda->save();
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
