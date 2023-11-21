@@ -16,7 +16,6 @@ class BateriaController extends Controller
 
         DB::beginTransaction();
         try {
-
             $bateria = Bateria::create([
                 'id' => $request->input('id'),
                 'surfista1' => $request->input('surfista1'),
@@ -25,7 +24,6 @@ class BateriaController extends Controller
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$bateria]);
         } catch (Exception $e) {
-            dd($e);
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
