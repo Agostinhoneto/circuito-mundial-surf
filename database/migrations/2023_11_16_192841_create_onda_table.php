@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('bateria_id')->references('id')->on('baterias')->onDelete('cascade');
             $table->unsignedBigInteger('surfista_id');
             $table->foreign('surfista_id')->references('numero')->on('surfistas')->onDelete('cascade');
-        
+            $table->dropColumn('updated_at');
             $table->timestamps();
         });
     }

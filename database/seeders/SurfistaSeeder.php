@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Surfista;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SurfistaSeeder extends Seeder
 {
@@ -13,16 +14,22 @@ class SurfistaSeeder extends Seeder
      */
     public function run(): void
     {
-        Surfista::create([
+        
+        $surfista = Surfista::create([
             'numero' => 1,
             'nome' => 'John Doe',
             'pais' => 'Estados Unidos',
+            'created_at' => now(),
         ]);
 
-        Surfista::create([
+        $surfista = Surfista::create([
             'numero' => 2,
             'nome' => 'Jane Doe',
             'pais' => 'Estados Unidos', 
+            'created_at' => now(),
         ]);
+
+        $surfista->timestamps = false;
+
     }
 }

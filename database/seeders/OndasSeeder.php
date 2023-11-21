@@ -17,6 +17,7 @@ class OndasSeeder extends Seeder
             'id' => 1,
             'bateria_id' => 1,
             'surfista_id' => 1,
+            'created_at' => now(),
         ]);
     }
 }

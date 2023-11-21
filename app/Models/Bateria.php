@@ -15,9 +15,7 @@ class Bateria extends Model
         'surfista2',
     ];
 
-    protected $hidden = [
-        'updated_at',
-    ];
+    public $timestamps = false;
 
     public function notas()
     {

@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('baterias', function (Blueprint $table) {
             $table->id(); 
+            $table->foreignId('surfista1')->constrained('surfistas')->nullable()->references('numero'); 
+            $table->foreignId('surfista2')->constrained('surfistas')->nullable()->references('numero');
             $table->timestamps();
+            $table->dropColumn('updated_at');
         });
     }
 
