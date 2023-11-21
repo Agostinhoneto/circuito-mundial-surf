@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OndasFormRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Onda;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OndasController extends Controller
@@ -16,7 +16,7 @@ class OndasController extends Controller
         return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK,$onda]);
     }
 
-    public function store(Request $request)
+    public function store(OndasFormRequest $request)
     {
         DB::beginTransaction();
         try {

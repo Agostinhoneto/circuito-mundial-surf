@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NotasFormRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Nota;
-use App\Models\Surfista;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class NotasController extends Controller
@@ -18,7 +17,7 @@ class NotasController extends Controller
         return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK,$notas]);
     }
 
-    public function store(Request $request)
+    public function store(NotasFormRequest $request)
     {
         DB::beginTransaction();
         try {

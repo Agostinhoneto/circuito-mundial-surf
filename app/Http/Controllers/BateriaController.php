@@ -11,13 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class BateriaController extends Controller
 {
-    public function index()
-    {
-        $query = Bateria::all();
-        return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK, $query]); 
-       }
-
-  
     public function store(BateriaFormRequest $request)
     {
 
@@ -46,9 +39,8 @@ class BateriaController extends Controller
 
     public function determinarVencedor($bateriaId)
     {
-        $bateria = Bateria::with('primeiroSurfista','segundoSurfista','primeiroSurfista.ondas')->findOrFail($bateriaId);
+        $bateria = Bateria::with('primeiroSurfista', 'segundoSurfista', 'primeiroSurfista.ondas')->findOrFail($bateriaId);
         $vencedor = $bateria->calcularVencedor();
         return response()->json(['vencedor' => $vencedor]);
     }
-
 }

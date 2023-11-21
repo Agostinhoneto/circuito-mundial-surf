@@ -22,11 +22,8 @@ class OndasFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'onda' => 'required|integer',
-            'notaParcial1' => 'required|double',
-            'notaParcial2' => 'required|double',
-            'notaParcial3' => 'required|double',
-            
+            'bateria_id' => 'required|integer',
+            'surfista_id' => 'required|integer',
         ];
     }
 }
