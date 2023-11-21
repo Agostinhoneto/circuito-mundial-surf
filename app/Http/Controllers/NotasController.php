@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NotasFormRequest;
-use App\HttpStatusCodes;
-use App\Messages;
+use App\Http\Resources\NotasResource;
+use App\Helpers\HttpStatusCodes;
+use App\Helpers\Messages;
 use App\Models\Nota;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -16,15 +17,11 @@ class NotasController extends Controller
     {
         DB::beginTransaction();
         try {
-            $nota = Nota::create([
-                'id' => $request->input('id'),
-                'onda' => $request->input('onda'),
-                'notaParcial1' => $request->input('notaParcial1'),
-                'notaParcial2' => $request->input('notaParcial2'),
-                'notaParcial3' => $request->input('notaParcial3'),
-            ]);
+            $data = $request->validated();
+            $nota = Nota::create($data);
+            new NotasResource($nota);
             DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$nota]);
         } catch (Exception $e) {
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);

@@ -2,25 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\HttpStatusCodes;
-use App\Messages;
+use App\Helpers\Messages;
+use App\Http\Requests\BateriaFormRequest;
+use App\Http\Resources\BateriasResource;
+use App\Helpers\HttpStatusCodes;
 use App\Models\Bateria;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 
 class BateriaController extends Controller
 {
-    public function store(Request $request)
+    public function store(BateriaFormRequest $request)
     {
-
         DB::beginTransaction();
         try {
-            $bateria = Bateria::create([
-                'id' => $request->input('id'),
-                'surfista1' => $request->input('surfista1'),
-                'surfista2' => $request->input('surfista2'),
-            ]);
+            $data = $request->validated();
+            $bateria = Bateria::create($data);
+            new BateriasResource($bateria);
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$bateria]);
         } catch (Exception $e) {

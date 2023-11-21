@@ -17,6 +17,7 @@ class OndasResource extends JsonResource
         return [
             'id' => $this->id,
             'bateria_id' => $this->bateria_id,
+            'surfista_id' => $this->surfista_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

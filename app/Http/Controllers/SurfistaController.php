@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SurfistaFormRequest;
 use App\Http\Resources\SurfistaResource;
-use App\HttpStatusCodes;
-use App\Messages;
+use App\Helpers\HttpStatusCodes;
+use App\Helpers\Messages;
 use App\Models\Surfista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,25 +17,15 @@ class SurfistaController extends Controller
     {
         $surfista = Surfista::paginate();
         return SurfistaResource::collection($surfista);
-        /*
-        $query = Surfista::query();
-        if ($request->has('nome')) {
-            $query->where('nome' , $request->nome);
-
-        }
-        return $query->paginate(5);
-        */
     }
 
     public function store(SurfistaFormRequest $request)
     {
         DB::beginTransaction();
         try {
-            $surfista = Surfista::create([
-                'numero' => $request->input('numero'),
-                'nome' => $request->input('nome'),
-                'pais' => $request->input('pais'),
-            ]);
+            $data = $request->validated();
+            $surfista = Surfista::create($data);
+            new SurfistaResource($surfista);
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$surfista]);
         } catch (\Exception $e) {
