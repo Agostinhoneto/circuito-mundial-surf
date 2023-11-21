@@ -22,17 +22,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::apiResource('surfistas', SurfistaController::class)->only([
+    'index', 'store',
+]);
 
-Route::controller(SurfistaController::class)->group(function () {
-    Route::get('surfistas/index', 'index');
-    Route::post('surfistas/store', 'store');  
-});
-
+Route::apiResource('bateria', BateriaController::class)->only([
+    'store', 
+    'vencedor/{bateriaId}',
+]);
+/*
 Route::controller(BateriaController::class)->group(function () {
     Route::post('bateria/store', 'store');  
     Route::get('bateria/vencedor/{bateriaId}','determinarVencedor');
 });
-
+*/
 Route::controller(OndasController::class)->group(function () {
     Route::post('ondas/store', 'store');  
 });

@@ -15,7 +15,10 @@ class Bateria extends Model
         'surfista2',
     ];
 
-
+    protected $hidden =[
+        'updated_at',
+    ];
+    
     public function notas()
     {
         return $this->belongsTo(Nota::class);
