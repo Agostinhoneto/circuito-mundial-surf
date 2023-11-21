@@ -13,7 +13,6 @@ class NotasSeeder extends Seeder
      */
     public function run(): void
     {
-       // DB::table('notas')->truncate();
         DB::table('notas')->insert([
             'onda' => 1,
             'notaParcial1' => 7,
