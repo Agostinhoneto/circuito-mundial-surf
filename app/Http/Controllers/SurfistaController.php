@@ -6,8 +6,6 @@ use App\Http\Requests\SurfistaFormRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Surfista;
-use App\Repositories\SurfistaRepository;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,6 +14,7 @@ class SurfistaController extends Controller
 
     public function index(Request $request)
     {
+
         $query = Surfista::query();
         if ($request->has('nome')) {
             $query->where('nome' , $request->nome);

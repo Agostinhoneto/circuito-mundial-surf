@@ -17,13 +17,13 @@ class NotasController extends Controller
     {
         DB::beginTransaction();
         try {
-            $nota = new Nota();
-            $nota->id = $request->id;
-            $nota->onda = $request->onda;
-            $nota->notaParcial1 = $request->notaParcial1;
-            $nota->notaParcial2 = $request->notaParcial2;
-            $nota->notaParcial3 = $request->notaParcial3;
-            $nota->save();
+            $nota = Nota::create([
+                'id' => $request->input('id'),
+                'onda' => $request->input('onda'),
+                'notaParcial1' => $request->input('notaParcial1'),
+                'notaParcial2' => $request->input('notaParcial2'),
+                'notaParcial3' => $request->input('notaParcial3'),
+            ]);
             DB::commit();        
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (Exception $e) {

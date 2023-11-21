@@ -16,11 +16,11 @@ class BateriaController extends Controller
 
         DB::beginTransaction();
         try {
-            $baterias = new Bateria();
-            $baterias->id = $request->id;
-            $baterias->surfista1 = $request->surfista1;
-            $baterias->surfista2 = $request->surfista2;
-            $baterias->save();
+            $bateria = Bateria::create([
+                'id' => $request->input('id'),
+                'surfista1' => $request->input('surfista1'),
+                'surfista2' => $request->input('surfista2'),
+            ]);
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (Exception $e) {

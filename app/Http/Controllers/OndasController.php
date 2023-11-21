@@ -14,11 +14,11 @@ class OndasController extends Controller
     {
         DB::beginTransaction();
         try {
-            $onda = new Onda();
-            $onda->id = $request->id;
-            $onda->bateria_id = $request->bateria_id;
-            $onda->surfista_id = $request->surfista_id;
-            $onda->save();
+            $onda = Onda::create([
+                'id' => $request->input('id'),
+                'bateria_id' => $request->input('bateria_id'),
+                'surfista_id' => $request->input('surfista_id'),
+            ]);
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (\Exception $e) {

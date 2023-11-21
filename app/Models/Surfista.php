@@ -9,12 +9,15 @@ class Surfista extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
         'numero',
         'nome',
         'pais',
     ];
 
+    public $timestamps = false;
+    
     public function bateria()
     {
         return $this->belongsTo(Bateria::class);
