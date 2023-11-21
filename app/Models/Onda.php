@@ -12,6 +12,7 @@ class Onda extends Model
     protected $fillable = [
         'id',
         'bateria_id',
+        'surfista_id',
     ];
 
     public function nota()

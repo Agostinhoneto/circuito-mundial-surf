@@ -23,6 +23,8 @@ class OndasController extends Controller
             $onda = new Onda();
             $onda->id = $request->id;
             $onda->bateria_id = $request->bateria_id;
+            $onda->surfista_id = $request->surfista_id;
+
             $onda->save();
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);

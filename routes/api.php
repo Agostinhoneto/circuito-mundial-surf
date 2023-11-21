@@ -29,17 +29,14 @@ Route::controller(SurfistaController::class)->group(function () {
 });
 
 Route::controller(BateriaController::class)->group(function () {
-    Route::get('bateria/index', 'index');
     Route::post('bateria/store', 'store');  
     Route::get('bateria/vencedor/{bateriaId}','determinarVencedor');
 });
 
 Route::controller(OndasController::class)->group(function () {
-    Route::get('ondas/index', 'index');
     Route::post('ondas/store', 'store');  
 });
 
 Route::controller(NotasController::class)->group(function () {
-    Route::get('notas/index', 'index');
     Route::post('notas/store', 'store');  
 });
