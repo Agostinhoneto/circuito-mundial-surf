@@ -16,17 +16,12 @@ class SurfistaController extends Controller
 
     public function index(Request $request)
     {
-        DB::beginTransaction();
-        try {
-            $query = Surfista::query();
-            if ($request->has('nome')) {
-                $query->where('nome', $request->nome);
-            }
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK], $query);
-        } catch (\Exception $e) {
-            DB::rollback();
-            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
+        $query = Surfista::query();
+        if ($request->has('nome')) {
+            $query->where('nome' , $request->nome);
+
         }
+        return $query->paginate(5);   
     }
 
     public function store(SurfistaFormRequest $request)

@@ -24,7 +24,6 @@ class OndasController extends Controller
             $onda->id = $request->id;
             $onda->bateria_id = $request->bateria_id;
             $onda->save();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
         } catch (\Exception $e) {
