@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BateriaFormRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Bateria;
@@ -17,7 +16,7 @@ class BateriaController extends Controller
 
         DB::beginTransaction();
         try {
-            
+
             $bateria = Bateria::create([
                 'id' => $request->input('id'),
                 'surfista1' => $request->input('surfista1'),
@@ -36,7 +35,7 @@ class BateriaController extends Controller
     {
         if ($bateriaId == "") {
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-        } else {      
+        } else {
             $bateria = Bateria::with('primeiroSurfista', 'segundoSurfista', 'primeiroSurfista.ondas')->findOrFail($bateriaId);
             $vencedor = $bateria->calcularVencedor();
             return response()->json(['Vencedor é :' => $vencedor]);

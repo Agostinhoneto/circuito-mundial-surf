@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\OndasFormRequest;
 use App\HttpStatusCodes;
 use App\Messages;
 use App\Models\Onda;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OndasController extends Controller
 {
-    public function store(OndasFormRequest $request)
+    public function store(Request $request)
     {
         DB::beginTransaction();
         try {

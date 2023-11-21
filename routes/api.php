@@ -27,18 +27,16 @@ Route::get('/', function () {
     ]);
 });
 
+//Inserindo Surfistas e listando todos.
 Route::get('/surfistas/index',[SurfistaController::class,'index']);
-Route::get('/surfistas/store',[SurfistaController::class,'store']);
+Route::post('/surfistas/store',[SurfistaController::class,'store']);
 
+// Inserindo Bateria.
+Route::post('/bateria/store',[BateriaController::class,'store']);
+Route::get('/bateria/vencedor/{bateriaId}',[BateriaController::class,'determinarVencedor']);
 
-Route::apiResource('bateria', BateriaController::class)->only([
-    'store', 'vencedor/{bateriaId}',
-]);
+// Inserindo Ondas.
+Route::post('/ondas/store',[OndasController::class,'store']);
 
-Route::apiResource('ondas', OndasController::class)->only([
-    'store',
-]);
-
-Route::apiResource('notas', NotasController::class)->only([
-    'store',
-]);
+//Inserindo Notas.
+Route::post('/notas/store',[NotasController::class,'store']);
