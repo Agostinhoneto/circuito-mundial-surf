@@ -28,11 +28,15 @@ class BateriaController extends Controller
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
     }
-    
+
     public function determinarVencedor($bateriaId)
     {
-        $bateria = Bateria::with('primeiroSurfista', 'segundoSurfista', 'primeiroSurfista.ondas')->findOrFail($bateriaId);
-        $vencedor = $bateria->calcularVencedor();
-        return response()->json(['vencedor' => $vencedor]);
+        if ($bateriaId != "") {
+            $bateria = Bateria::with('primeiroSurfista', 'segundoSurfista', 'primeiroSurfista.ondas')->findOrFail($bateriaId);
+            $vencedor = $bateria->calcularVencedor();
+            return response()->json(['Vencedor é :' => $vencedor]);
+        } else {
+            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
+        }
     }
 }
