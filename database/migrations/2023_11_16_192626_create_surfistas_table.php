@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nome');
             $table->string('pais');
             $table->timestamps();
-            $table->dropColumn('updated_at');
         });
     }
 

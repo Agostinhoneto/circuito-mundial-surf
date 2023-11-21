@@ -16,7 +16,6 @@ class Surfista extends Model
         'pais',
     ];
 
-    public $timestamps = false;
     
     public function bateria()
     {

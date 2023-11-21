@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('surfista1')->constrained('surfistas')->nullable()->references('numero'); 
             $table->foreignId('surfista2')->constrained('surfistas')->nullable()->references('numero');
             $table->timestamps();
-            $table->dropColumn('updated_at');
         });
     }
 

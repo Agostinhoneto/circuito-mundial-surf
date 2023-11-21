@@ -8,22 +8,25 @@ use App\Messages;
 use App\Models\Bateria;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class BateriaController extends Controller
 {
-    public function store(BateriaFormRequest $request)
+    public function store(Request $request)
     {
 
         DB::beginTransaction();
         try {
+            
             $bateria = Bateria::create([
                 'id' => $request->input('id'),
                 'surfista1' => $request->input('surfista1'),
                 'surfista2' => $request->input('surfista2'),
             ]);
             DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$bateria]);
         } catch (Exception $e) {
+            dd($e);
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }

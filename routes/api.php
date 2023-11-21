@@ -27,8 +27,7 @@ Route::apiResource('surfistas', SurfistaController::class)->only([
 ]);
 
 Route::apiResource('bateria', BateriaController::class)->only([
-    'store', 
-    'vencedor/{bateriaId}',
+    'store','vencedor/{bateriaId}',
 ]);
 
 Route::apiResource('ondas', OndasController::class)->only([

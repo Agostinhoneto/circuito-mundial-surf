@@ -33,7 +33,7 @@ class SurfistaController extends Controller
                 'pais' => $request->input('pais'),
             ]);
             DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK]);
+            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$surfista]);
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->double('notaParcial2');
             $table->double('notaParcial3');
             $table->timestamps();
-            $table->dropColumn('updated_at');
         });
     }
 
