@@ -28,15 +28,7 @@ class BateriaController extends Controller
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
     }
-
-    public function calcularMedia($nota1, $nota2, $nota3)
-    {
-        $nota1 = 0;
-        $nota2 = 0;
-        $nota3 = 0;
-        return ($nota1 + $nota2 + $nota3) / 3;
-    }
-
+    
     public function determinarVencedor($bateriaId)
     {
         $bateria = Bateria::with('primeiroSurfista', 'segundoSurfista', 'primeiroSurfista.ondas')->findOrFail($bateriaId);
