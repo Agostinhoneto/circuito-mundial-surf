@@ -13,8 +13,9 @@ class BateriaController extends Controller
 {
     public function index()
     {
-        return response()->json(Bateria::all());
-    }
+        $query = Bateria::all();
+        return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK, $query]); 
+       }
 
   
     public function store(BateriasFormRequest $request)

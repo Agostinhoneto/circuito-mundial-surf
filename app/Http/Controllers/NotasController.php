@@ -14,15 +14,8 @@ class NotasController extends Controller
 {
     public function index()
     {
-        return Nota::all();
-
-        $surfista = Nota::get()->toJson(JSON_PRETTY_PRINT);
-        return response($surfista, 200);
-    }
-
-    public function show($id)
-    {
-        return Nota::find($id);
+        $notas = Nota::get()->toJson(JSON_PRETTY_PRINT);
+        return response()->json([Messages::SUCCESS_MESSAGE, HttpStatusCodes::OK,$notas]);
     }
 
     public function store(Request $request)
@@ -42,28 +35,5 @@ class NotasController extends Controller
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
-    }
-
-    public function update(Request $request, $id)
-    {
-        $notas = Nota::findOrFail($id);
-        $notas->update($request->all());
-
-        return $notas;
-    }
-
-    public function obterMedia($notaId)
-    {
-        $nota = Nota::findOrFail($notaId);
-        $media = $nota->calcularMedia();
-
-        return response()->json(['media' => $media]);
-    }
-
-    public function destroy($id)
-    {
-        $notas = Nota::findOrFail($id);
-        $notas->delete();
-        return 204;
     }
 }
