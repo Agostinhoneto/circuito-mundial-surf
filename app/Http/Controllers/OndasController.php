@@ -7,15 +7,14 @@ use App\Http\Resources\OndasResource;
 use App\Helpers\HttpStatusCodes;
 use App\Helpers\Messages;
 use App\Models\Onda;
-use App\Services\OndaService;
-use Illuminate\Support\Facades\DB;
+use App\Services\OndasService;
 use Illuminate\Http\Request;
 
 class OndasController extends Controller
 {
     private $ondaService;
 
-    public function __construct(OndaService $ondaService)
+    public function __construct(OndasService $ondaService)
     {
         $this->ondaService = $ondaService;
     }

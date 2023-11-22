@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\OndaRepository;
+use App\Repositories\OndasRepository;
 use Illuminate\Support\Facades\DB;
 
-class OndaService
+class OndasService
 {
     private $ondaRepository;
 
-    public function __construct(OndaRepository $ondaRepository)
+    public function __construct(OndasRepository $ondaRepository)
     {
         $this->ondaRepository = $ondaRepository;
     }

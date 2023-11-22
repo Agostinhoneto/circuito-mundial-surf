@@ -7,14 +7,13 @@ use App\Http\Resources\SurfistaResource;
 use App\Helpers\HttpStatusCodes;
 use App\Helpers\Messages;
 use App\Models\Surfista;
-use Illuminate\Support\Facades\DB;
-use App\Services\SurfistaService;
+use App\Services\SurfistasService;
 
 class SurfistaController extends Controller
 {
     private $surfistaService;
 
-    public function __construct(SurfistaService $surfistaService)
+    public function __construct(SurfistasService $surfistaService)
     {
         $this->surfistaService = $surfistaService;
     }

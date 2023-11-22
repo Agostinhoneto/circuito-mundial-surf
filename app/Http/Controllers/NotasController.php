@@ -7,13 +7,19 @@ use App\Http\Resources\NotasResource;
 use App\Helpers\HttpStatusCodes;
 use App\Helpers\Messages;
 use App\Models\Nota;
-use Exception;
+use App\Services\NotasService;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\DB;
 
 class NotasController extends Controller
 {
+    private $notasService;
+
+    public function __construct(NotasService $notasService)
+    {
+        $this->notasService = $notasService;
+    }
+
     public function index(Request $request)
     {
         $nota = Nota::paginate();
@@ -21,6 +27,17 @@ class NotasController extends Controller
     }
     public function store(NotasFormRequest $request)
     {
+        $result['data'] =  $this->notasService->salvar(
+            $request->id,
+            $request->onda,
+            $request->notaParcial1,
+            $request->notaParcial2,
+            $request->notaParcial3,
+
+        );
+        return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $result]);
+
+        /*
         DB::beginTransaction();
         try {
             $data = $request->validated();
@@ -32,5 +49,6 @@ class NotasController extends Controller
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
+        */
     }
 }

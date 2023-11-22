@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\SurfistaRepository;
 use Illuminate\Support\Facades\DB;
 
-class SurfistaService
+class SurfistasService
 {
     private $surfistaRepository;
 

@@ -5,10 +5,8 @@ namespace App\Repositories;
 use App\Models\Surfista;
 
 
-class SurfistaRepository
+class SurfistasRepository
 {
-
-
     public function salvar($numero, $nome, $pais)
     {
         try {

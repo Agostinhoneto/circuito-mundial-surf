@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Onda;
 
 
-class OndaRepository
+class OndasRepository
 {
     public function salvar($id, $bateria_id, $surfista_id)
     {
