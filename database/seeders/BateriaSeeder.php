@@ -14,14 +14,18 @@ class BateriaSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $bateria = new  Bateria(array(
+        Bateria::create([
             'id' => 1,
             'surfista1' => 1,
             'surfista2' => 2,
             'created_at' => now(),
-        ));
-        $bateria->timestamps = false;
-        $bateria->save();
+        ]);
+
+        Bateria::create([
+            'id' => 2,
+            'surfista1' => 2,
+            'surfista2' => 1,
+            'created_at' => now(),
+        ]);
     }
 }

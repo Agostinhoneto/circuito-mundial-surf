@@ -14,7 +14,7 @@ class NotasService
         $this->notasRepository = $notasRepository;
     }
 
-    public function salvar($id,$onda, $notaParcial1,$notaParcial2,$notaParcial3)
+    public function salvar($id,$onda,$notaParcial1,$notaParcial2,$notaParcial3)
     {
         DB::beginTransaction();
         try {

@@ -43,6 +43,7 @@ class Bateria extends Model
 
         foreach ($this->primeiroSurfista->ondas()->get() as $onda) {
             $nota = $onda->nota->first();
+
             $temp = ($nota->notaParcial1 + $nota->notaParcial2 + $nota->notaParcial3) / 3;
 
             if ($temp > $surfistaMaiorNota1) {
