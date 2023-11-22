@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class NotasController extends Controller
 {
-
+    public function index(Request $request)
+    {
+        $nota = Nota::paginate();
+        return NotasResource::collection($nota);
+    }
     public function store(NotasFormRequest $request)
     {
         DB::beginTransaction();

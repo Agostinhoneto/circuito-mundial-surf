@@ -32,11 +32,14 @@ Route::get('/surfistas/index',[SurfistaController::class,'index']);
 Route::post('/surfistas/store',[SurfistaController::class,'store']);
 
 // Inserindo Bateria.
+Route::get('/bateria/index',[BateriaController::class,'index']);
 Route::post('/bateria/store',[BateriaController::class,'store']);
 Route::get('/bateria/vencedor/{bateriaId}',[BateriaController::class,'determinarVencedor']);
 
 // Inserindo Ondas.
+Route::get('/ondas/index',[OndasController::class,'index']);
 Route::post('/ondas/store',[OndasController::class,'store']);
 
 //Inserindo Notas.
+Route::get('/notas/index',[NotasController::class,'index']);
 Route::post('/notas/store',[NotasController::class,'store']);

@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class BateriaController extends Controller
 {
+    public function index(Request $request)
+    {
+        $bateria = Bateria::paginate();
+        return BateriasResource::collection($bateria);
+    }
+
     public function store(BateriaFormRequest $request)
     {
         DB::beginTransaction();

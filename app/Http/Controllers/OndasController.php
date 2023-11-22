@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class OndasController extends Controller
 {
+    public function index(Request $request)
+    {
+        $onda = Onda::paginate();
+        return OndasResource::collection($onda);
+    }
+
     public function store(OndasFormRequest $request)
     {
         DB::beginTransaction();
