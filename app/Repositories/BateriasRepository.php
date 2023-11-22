@@ -12,16 +12,14 @@ class BateriasRepository
     {
         $this->bateria = $bateria;
     }
-    public function salvar($id, $surfista1, $surfista2)
+    public function salvar($id,$surfista1,$surfista2)
     {
 
         try {
-
             $bateria = new Bateria();
             $bateria->id = $id;
             $bateria->surfista1 = $surfista1;
             $bateria->surfista2  = $surfista2;
-
             $bateria->save();
 
             return $bateria;

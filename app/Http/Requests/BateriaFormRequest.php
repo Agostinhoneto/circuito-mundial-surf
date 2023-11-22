@@ -22,9 +22,9 @@ class BateriaFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required',
-            'surfista1' => 'required',
-            'surfista2' => 'required',
+            'id' => 'required|integer',
+            'surfista1' => 'required|integer',
+            'surfista2' => 'required|integer',
         ];
     }
 }

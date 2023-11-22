@@ -20,13 +20,13 @@ class BateriaController extends Controller
         $this->bateriaService = $bateriaService;
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $bateria = Bateria::paginate();
         return BateriasResource::collection($bateria);
     }
 
-    public function store(BateriaFormRequest $request)
+    public function store(Request $request)
     {
         $result['data'] =  $this->bateriaService->salvar(
             $request->id,

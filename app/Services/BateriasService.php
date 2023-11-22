@@ -18,7 +18,10 @@ class BateriasService
     {
         DB::beginTransaction();
         try {
-            $data = $this->bateriasRepository->salvar($id,$surfista1,$surfista2);
+            $data = $this->bateriasRepository->salvar(
+                $id,
+                $surfista1,
+                $surfista2);
             DB::commit();
             return $data;
         } catch (\Exception $e) {

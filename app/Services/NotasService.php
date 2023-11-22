@@ -18,7 +18,13 @@ class NotasService
     {
         DB::beginTransaction();
         try {
-            $data = $this->notasRepository->salvar($id,$onda, $notaParcial1,$notaParcial2,$notaParcial3);
+            $data = $this->notasRepository->salvar(
+                $id,
+                $onda,
+                $notaParcial1,
+                $notaParcial2,
+                $notaParcial3
+            );
             DB::commit();
             return $data;
         } catch (\Exception $e) {

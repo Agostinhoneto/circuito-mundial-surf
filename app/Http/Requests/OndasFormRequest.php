@@ -22,6 +22,7 @@ class OndasFormRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => 'required|integer',
             'bateria_id' => 'required|integer',
             'surfista_id' => 'required|integer',
         ];
