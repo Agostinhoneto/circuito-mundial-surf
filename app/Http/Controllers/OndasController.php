@@ -8,6 +8,7 @@ use App\Helpers\HttpStatusCodes;
 use App\Helpers\Messages;
 use App\Models\Onda;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class OndasController extends Controller
 {

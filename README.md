@@ -40,13 +40,16 @@ DB_PASSWORD=
 ### `http://localhost:8000/api/bateria`
 
 Baterias.
+- **GET**: `http://localhost:8000/api/bateria/index` - listar baterias .
 - **POST**: `http://localhost:8000/api/bateria/store` - Cadastrar novas ondas em uma bateria.
 - **GET** : `http://localhost:8000/api/bateria/vencedor/{bateriaId}` - Obter o vencedor de uma bateria.
 
 ### `http://localhost:8000/api/ondas`
+- **GET**: `http://localhost:8000/api/ondas/index` - listar ondas .
 
 - **POST**: `http://localhost:8000/api/ondas/store` - Criar uma nova onda
 
 ### `http://localhost:8000/api/notas`
+- **GET**: `http://localhost:8000/api/notas/index` - listar notas .
 
 - **POST**: `http://localhost:8000/api/notas/store` - Criar um nova nota .

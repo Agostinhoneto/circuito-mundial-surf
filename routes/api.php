@@ -31,15 +31,15 @@ Route::get('/', function () {
 Route::get('/surfistas/index',[SurfistaController::class,'index']);
 Route::post('/surfistas/store',[SurfistaController::class,'store']);
 
-// Inserindo Bateria.
+// Inserindo Bateria e listando.
 Route::get('/bateria/index',[BateriaController::class,'index']);
 Route::post('/bateria/store',[BateriaController::class,'store']);
 Route::get('/bateria/vencedor/{bateriaId}',[BateriaController::class,'determinarVencedor']);
 
-// Inserindo Ondas.
+// Inserindo Ondas e listando..
 Route::get('/ondas/index',[OndasController::class,'index']);
 Route::post('/ondas/store',[OndasController::class,'store']);
 
-//Inserindo Notas.
+//Inserindo Notas e listando.
 Route::get('/notas/index',[NotasController::class,'index']);
 Route::post('/notas/store',[NotasController::class,'store']);

@@ -9,6 +9,7 @@ use App\Helpers\HttpStatusCodes;
 use App\Models\Bateria;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class BateriaController extends Controller
 {

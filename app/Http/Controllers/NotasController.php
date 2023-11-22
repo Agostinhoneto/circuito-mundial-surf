@@ -8,6 +8,8 @@ use App\Helpers\HttpStatusCodes;
 use App\Helpers\Messages;
 use App\Models\Nota;
 use Exception;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 
 class NotasController extends Controller
