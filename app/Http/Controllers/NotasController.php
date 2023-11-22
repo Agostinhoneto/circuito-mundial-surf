@@ -36,19 +36,5 @@ class NotasController extends Controller
 
         );
         return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $result]);
-
-        /*
-        DB::beginTransaction();
-        try {
-            $data = $request->validated();
-            $nota = Nota::create($data);
-            new NotasResource($nota);
-            DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$nota]);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-        }
-        */
     }
 }

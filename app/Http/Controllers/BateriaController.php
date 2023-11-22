@@ -7,12 +7,21 @@ use App\Http\Requests\BateriaFormRequest;
 use App\Http\Resources\BateriasResource;
 use App\Helpers\HttpStatusCodes;
 use App\Models\Bateria;
+use App\Services\BateriasService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class BateriaController extends Controller
 {
+
+    private $bateriaService;
+
+    public function __construct(BateriasService $bateriaService)
+    {
+        $this->bateriaService = $bateriaService;
+    }
+
     public function index(Request $request)
     {
         $bateria = Bateria::paginate();
@@ -21,7 +30,15 @@ class BateriaController extends Controller
 
     public function store(BateriaFormRequest $request)
     {
+        $result['data'] =  $this->bateriaService->salvar(
+            $request->id,
+            $request->surfista1,
+            $request->surfista2,
 
+
+        );
+        return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $result]);
+        /*
         DB::beginTransaction();
         try {
             $data = $request->validated();
@@ -34,6 +51,7 @@ class BateriaController extends Controller
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
+        */
     }
 
     public function determinarVencedor($bateriaId)

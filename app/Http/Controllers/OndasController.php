@@ -34,6 +34,5 @@ class OndasController extends Controller
             $request->surfista_id,
         );
         return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $result]);
-
     }
 }
