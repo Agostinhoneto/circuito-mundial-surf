@@ -21,11 +21,6 @@ class BateriaSeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        Bateria::create([
-            'id' => 2,
-            'surfista1' => 2,
-            'surfista2' => 1,
-            'created_at' => now(),
-        ]);
+
     }
 }

@@ -23,12 +23,6 @@ class NotasSeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        Nota::create([
-            'onda' => 1,
-            'notaParcial1' => 7,
-            'notaParcial2' => 6,
-            'notaParcial3' => 5,
-            'created_at' => now(),
-        ]);
+
     }
 }

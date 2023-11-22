@@ -22,12 +22,6 @@ class OndasSeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        Onda::create([
-            'id' => 2,
-            'bateria_id' => 2,
-            'surfista_id' => 2,
-            'created_at' => now(),
-        ]);
 
     }
 }

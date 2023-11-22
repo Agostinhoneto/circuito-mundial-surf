@@ -42,21 +42,22 @@ class Bateria extends Model
         $surfistaMaiorNota2 = 0;
 
         foreach ($this->primeiroSurfista->ondas()->get() as $onda) {
+            if(!isset($onda->nota)) continue;
             $nota = $onda->nota->first();
-
             $temp = ($nota->notaParcial1 + $nota->notaParcial2 + $nota->notaParcial3) / 3;
-
             if ($temp > $surfistaMaiorNota1) {
                 $surfistaMaiorNota1 = $temp;
             } elseif ($temp > $surfistaMaiorNota2) {
                 $surfistaMaiorNota2 = $temp;
             }
         }
+
         $total1 = $surfistaMaiorNota1 + $surfistaMaiorNota2;
         $surfista2MaiorNota1 = 0;
         $surfista2MaiorNota2 = 0;
 
         foreach ($this->segundoSurfista->ondas()->get() as $onda) {
+            if(!isset($onda->nota)) continue;
             $nota = $onda->nota->first();
             $temp = ($nota->notaParcial1 + $nota->notaParcial2 + $nota->notaParcial3) / 3;
             if ($temp > $surfista2MaiorNota1) {
