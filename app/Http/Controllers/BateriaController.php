@@ -21,6 +21,7 @@ class BateriaController extends Controller
 
     public function store(BateriaFormRequest $request)
     {
+
         DB::beginTransaction();
         try {
             $data = $request->validated();
@@ -29,6 +30,7 @@ class BateriaController extends Controller
             DB::commit();
             return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$bateria]);
         } catch (Exception $e) {
+            dd($e);
             DB::rollback();
             return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
         }
