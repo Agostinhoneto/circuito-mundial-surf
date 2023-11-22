@@ -21,12 +21,12 @@
 
 2.1 - Configure o arquivo `.env` com as informações do banco de dados nesse caso usei o Mysql.
 
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=circuitomundialsurf
-# DB_USERNAME=
-# DB_PASSWORD=
+ DB_CONNECTION=mysql
+ DB_HOST=127.0.0.1
+ DB_PORT=3306
+ DB_DATABASE=circuitomundialsurf
+ DB_USERNAME=
+ DB_PASSWORD=
 
 2.3 - execute o comando :  php artisan migrate.
 
