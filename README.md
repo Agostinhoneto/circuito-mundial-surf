@@ -6,10 +6,13 @@
    ```bash
    git clone https://github.com/Agostinhoneto/circuito-mundial-surf.git
 
- 1.1 - cd circuito-mundial
- 1.2 -  composer install
- 1.3 - cp .env.example .env renomear para .env
- 1.4 - php artisan key:generate
+ 1.1 - execute o comando na pasta que clonou o projeto :  cd circuito-mundial
+
+ 1.2 -  execute o comando: composer install
+
+ 1.3 -  execute o comando para alterar o arquivo : cp .env.example .env renomear para .env
+
+ 1.4 -  execute o comando : php artisan key:generate
 
 2. **Configuração da Base de Dados:**
    - Instruções para configurar e migrar o banco de dados.
@@ -18,19 +21,24 @@
 
 2.1 - Configure o arquivo `.env` com as informações do banco de dados nesse caso usei o Mysql.
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=circuitomundialsurf
-DB_USERNAME=
-DB_PASSWORD=
+## DB_CONNECTION=mysql
+## DB_HOST=127.0.0.1
+## DB_PORT=3306
+## DB_DATABASE=circuitomundialsurf
+## DB_USERNAME=
+## DB_PASSWORD=
 
-2.3 - php artisan migrate.
-2.4  - php artisan db:seed - Para rodar os seeders de todas as tabelas : Surfistas,Baterias, Ondas e Notas.
-2.5 - php artisan serve - Para rodar a aplicação.
+2.3 - execute o comando :  php artisan migrate.
+
+2.4 - Para rodar os seeders de todas as tabelas : Surfistas,Baterias, Ondas e Notas.
+ php artisan db:seed
+
+2.5 - Para rodar a aplicação exceute :  php artisan serve
 
 ### 4 - Endpoints
 - para rodar os Endpoints eu utilizei a ferramenta Postman.
+
+### `http://localhost:8000/api/` - para retornar que API está funcionando.
 
 ### `http://localhost:8000/api/surfistas`
 
