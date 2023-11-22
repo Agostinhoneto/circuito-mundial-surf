@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\SurfistaRepository;
+use App\Repositories\SurfistasRepository;
 use Illuminate\Support\Facades\DB;
 
 class SurfistasService
 {
     private $surfistaRepository;
 
-    public function __construct(SurfistaRepository $surfistaRepository)
+    public function __construct(SurfistasRepository $surfistaRepository)
     {
         $this->surfistaRepository = $surfistaRepository;
     }
