@@ -8,8 +8,6 @@ use App\Http\Resources\BateriasResource;
 use App\Helpers\HttpStatusCodes;
 use App\Models\Bateria;
 use App\Services\BateriasService;
-use Exception;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class BateriaController extends Controller
@@ -34,24 +32,8 @@ class BateriaController extends Controller
             $request->id,
             $request->surfista1,
             $request->surfista2,
-
-
         );
         return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $result]);
-        /*
-        DB::beginTransaction();
-        try {
-            $data = $request->validated();
-            $bateria = Bateria::create($data);
-            new BateriasResource($bateria);
-            DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK,$bateria]);
-        } catch (Exception $e) {
-            dd($e);
-            DB::rollback();
-            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-        }
-        */
     }
 
     public function determinarVencedor($bateriaId)
