@@ -4,7 +4,7 @@
 
 1. Clone o repositório
    ```bash
-   git clone https://github.com/Agostinhoneto/circuito-mundial.git
+   git clone https://github.com/Agostinhoneto/circuito-mundial-surf.git
 
  1.1 - cd circuito-mundial
  1.2 -  composer install
