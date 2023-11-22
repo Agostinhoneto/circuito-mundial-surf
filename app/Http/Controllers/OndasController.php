@@ -35,18 +35,6 @@ class OndasController extends Controller
             $request->surfista_id,
         );
         return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $result]);
-        /*
-        DB::beginTransaction();
-        try {
-            $data = $request->validated();
-            $onda = Onda::create($data);
-            new OndasResource($onda);
-            DB::commit();
-            return response()->json([Messages::SAVE_MESSAGE, HttpStatusCodes::OK, $onda]);
-        } catch (\Exception $e) {
-            DB::rollback();
-            return response()->json([Messages::ERROR_MESSAGE, HttpStatusCodes::INTERNAL_SERVER_ERROR]);
-        }
-        */
+
     }
 }
