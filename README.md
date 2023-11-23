@@ -2,24 +2,28 @@
 
 ## Instalação
 
-1. Clone o repositório
+ 1. Configuração de ambiente.
+
+ - Sistema Operacional deve ter instalado o PHP na versão ^8.1.
+
+2. Clone o repositório
    ```bash
    git clone https://github.com/Agostinhoneto/circuito-mundial-surf.git
 
- 1.1 - execute o comando na pasta que clonou o projeto :  cd circuito-mundial
+ 2.1 - execute o comando na pasta que clonou o projeto :  cd circuito-mundial
 
- 1.2 -  execute o comando: composer install
+ 2.2 -  execute o comando: composer install
 
- 1.3 -  execute o comando para alterar o arquivo : cp .env.example .env renomear para .env
+ 2.3 -  execute o comando para alterar o arquivo : cp .env.example .env renomear para .env
 
- 1.4 -  execute o comando : php artisan key:generate
+ 2.4 -  execute o comando : php artisan key:generate
 
-2. **Configuração da Base de Dados:**
+3. **Configuração da Base de Dados:**
    - Instruções para configurar e migrar o banco de dados.
 
 ## Configuração da Base de Dados
 
-2.1 - Configure o arquivo `.env` com as informações do banco de dados nesse caso usei o Mysql.
+3.1 - Configure o arquivo `.env` com as informações do banco de dados nesse caso usei o Mysql.
 
  - DB_CONNECTION=mysql
  -  DB_HOST=127.0.0.1
@@ -28,14 +32,14 @@
  - DB_USERNAME=
  - DB_PASSWORD=
 
-2.3 - execute o comando :  php artisan migrate.
+3.2 - execute o comando :  php artisan migrate.
 
-2.4 - Para rodar os seeders de todas as tabelas : Surfistas,Baterias, Ondas e Notas.
+3.3 - Para rodar os seeders de todas as tabelas : Surfistas,Baterias, Ondas e Notas.
  php artisan db:seed
 
-2.5 - Para rodar a aplicação exceute :  php artisan serve
+3.4 - Para rodar a aplicação exceute :  php artisan serve
 
-### 4 - Endpoints
+### 5 - Endpoints
 - para rodar os Endpoints eu utilizei a ferramenta Postman.
 
 ### `http://localhost:8000/api/` - para retornar que API está funcionando.
